@@ -4,49 +4,33 @@
       "id": 2,
       "name": "Printer",
       "price": 303,
-      "quantity": 6,
+      "quantity": 77,
       "selected": false,
-      "available": true
-    },
-    {
-      "id": 3,
-      "name": "smartphone",
-      "price": 200,
-      "quantity": 2499,
-      "selected": true,
-      "available": true
+      "available": false
     },
     {
       "id": 4,
       "name": "Iphone",
       "price": 200,
-      "quantity": 2499,
-      "selected": false,
-      "available": true
-    },
-    {
-      "id": 5,
-      "name": "edwas",
-      "price": -9,
-      "quantity": 8,
-      "selected": false,
-      "available": true
-    },
-    {
-      "id": 6,
-      "name": "asssssss",
-      "price": -5,
-      "quantity": -4,
+      "quantity": 100,
       "selected": true,
       "available": true
     },
     {
-      "id": 7,
-      "name": "aa",
-      "price": 0,
-      "quantity": 5,
+      "id": 5,
+      "name": "MacOS X",
+      "price": 24,
+      "quantity": 0,
       "selected": false,
-      "available": false
+      "available": true
+    },
+    {
+      "name": "aaa",
+      "price": 2,
+      "quantity": 0,
+      "selected": true,
+      "available": false,
+      "id": 6
     }
   ]
 }

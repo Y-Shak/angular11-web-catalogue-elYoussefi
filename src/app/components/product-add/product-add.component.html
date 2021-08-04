@@ -1,43 +1,55 @@
 <div class="container" *ngIf="productFormGroup">
-    <div class="col-xs-12 offset-xl-2 col-xl-5 mt-5">
-        <h3>Add a product :</h3>
-        <div class="row">
-            {{ productFormGroup.value | json}}
-        </div>
-        <form [formGroup]="productFormGroup" (ngSubmit)="hundleSubmitAddProduct()">
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" formControlName="name" placeholder="name"
-                    [ngClass]="{'is-invalid' : submitted && productFormGroup.controls.name.errors}">
-                <label for="name">Name</label>
-                <div *ngIf="submitted && productFormGroup.controls.name.errors" class="invalid-feedback">
-                    <div *ngIf="productFormGroup.controls.name.errors.required"> Name is required
+    <div class="col-xs-12 offset-xl-2 col-xl-8 mt-5">
 
+        <div class="card mb-3">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="../../../assets/add-form.png" class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h3 class="mb-3">Add a product :</h3>
+                        <form [formGroup]="productFormGroup" (ngSubmit)="hundleSubmitAddProduct()">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" formControlName="name" placeholder="name"
+                                    [ngClass]="{'is-invalid' : submitted && productFormGroup.controls.name.errors}">
+                                <label for="name">Name</label>
+                                <div *ngIf="submitted && productFormGroup.controls.name.errors"
+                                    class="invalid-feedback">
+                                    <div *ngIf="productFormGroup.controls.name.errors.required"> Name is required
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input type="number" class="form-control" formControlName="price" placeholder="price">
+                                <label for="price">Price</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="number" class="form-control" formControlName="quantity"
+                                    placeholder="quantity">
+                                <label for="quantity">Quantity</label>
+                            </div>
+                            <div class="form-check mb-3 mt-3">
+                                <input class="form-check-input" type="checkbox" formControlName="selected" checked>
+                                <label class="form-check-label" for="selected">
+                                    Selected product ?
+                                </label>
+                            </div>
+
+                            <div class="form-check form-switch mb-3 mt-3">
+                                <input class="form-check-input" type="checkbox" id="available"
+                                    formControlName="available" checked>
+                                <label class="form-check-label" for="available">This product is Available ? </label>
+                            </div>
+                            <button type="submit" class="btn btn-primary mb-3 mt-3">Save</button>
+                            <!-- <button type="submit" class="btn btn-primary mb-3 mt-3" [disabled]="productFormGroup.invalid">Save</button> -->
+
+                        </form>
                     </div>
                 </div>
             </div>
-
-            <div class="form-floating mb-3">
-                <input type="number" class="form-control" formControlName="price" placeholder="price">
-                <label for="price">Price</label>
-            </div>
-            <div class="form-floating mb-3">
-                <input type="number" class="form-control" formControlName="quantity" placeholder="quantity">
-                <label for="quantity">Quantity</label>
-            </div>
-            <div class="form-check mb-3 mt-3">
-                <input class="form-check-input" type="checkbox" formControlName="selected" checked>
-                <label class="form-check-label" for="selected">
-                    Selected product ?
-                </label>
-            </div>
-
-            <div class="form-check form-switch mb-3 mt-3">
-                <input class="form-check-input" type="checkbox" id="available" formControlName="available" checked>
-                <label class="form-check-label" for="available">This product is Available ? </label>
-            </div>
-            <button type="submit" class="btn btn-primary mb-3 mt-3">Save</button>
-            <!-- <button type="submit" class="btn btn-primary mb-3 mt-3" [disabled]="productFormGroup.invalid">Save</button> -->
-
-        </form>
+        </div>
     </div>
 </div>

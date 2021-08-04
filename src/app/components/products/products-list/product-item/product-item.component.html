@@ -1,18 +1,24 @@
-<tr>
+<tr [ngClass]="{'table-warning': product.quantity == 0,
+                'table-danger': product.available == false
+}">
     <td>{{product.id}}</td>
     <td>{{product.name}}</td>
     <td>{{product.price}}</td>
     <td>{{product.quantity}}</td>
-    <td>{{product.selected}}</td>
-    <td>{{product.available}}</td>
+    <td><span [ngClass]="{'fa fa-heart text-danger' : product.selected ==true
+                            
+    }"> </span></td>
+    <td><span [ngClass]="{'fa fa-check text-success': product.available}"></span></td>
     <td>
+        <div class="d-grid gap-2 mx-3">
+            <button *ngIf="product.selected" class="btn btn-secondary" type="button"
+                (click)="hundleClickSelectProduct(product)"> UnSelect
+            </button>
+            <button *ngIf="!product.selected" class="btn btn-warning" (click)="hundleClickSelectProduct(product)">
+                Select
+            </button>
+        </div>
 
-        <button *ngIf="product.selected" class="btn btn-success" type="button"
-            (click)="hundleClickSelectProduct(product)"><i class="fa fa-check-circle"></i>
-        </button>
-        <button *ngIf="!product.selected" class="btn btn-light" (click)="hundleClickSelectProduct(product)">
-            <i class="fa fa-check-circle"></i>
-        </button>
     </td>
     <td>
         <button class="btn btn-danger" (click)="hundleClickDelete(product)">

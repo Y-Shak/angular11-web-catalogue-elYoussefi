@@ -12,7 +12,7 @@
         </ng-container>
         <ng-container *ngSwitchCase="DataStateEnum.LOADED">
 
-            <table class="table">
+            <table class="table table-light">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -21,16 +21,15 @@
                         <th>Quantity</th>
                         <th>Selected</th>
                         <th>Available</th>
-                        <th>Action</th>
+                        <th></th>
                         <th></th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <app-product-item class="app-ignore-component__diplay" *ngFor="let p of result.data" [product]="p"
-                        (itemProductEventEmitter)="onActionEvent($event)">
-
+                    <app-product-item class="app-ignore-component__diplay" *ngFor="let p of result.data" [product]="p">
                     </app-product-item>
+                    <!-- <app-product-item class="app-ignore-component__diplay" *ngFor="let p of result.data" [product]="p" (itemProductEventEmitter)="onActionEvent($event)"></app-product-item> -->
 
                 </tbody>
             </table>

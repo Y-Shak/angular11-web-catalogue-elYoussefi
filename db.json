@@ -5,7 +5,7 @@
       "name": "Printer",
       "price": 303,
       "quantity": 6,
-      "selected": false,
+      "selected": true,
       "available": true
     },
     {
@@ -21,7 +21,7 @@
       "name": "Iphone",
       "price": 200,
       "quantity": 2499,
-      "selected": false,
+      "selected": true,
       "available": true
     },
     {
@@ -45,16 +45,24 @@
       "name": "aa",
       "price": 0,
       "quantity": 5,
-      "selected": true,
+      "selected": false,
       "available": false
     },
     {
-      "id": 8,
-      "name": "rien a dire top",
+      "name": "",
       "price": 2,
       "quantity": 0,
-      "selected": false,
-      "available": true
+      "selected": true,
+      "available": true,
+      "id": 8
+    },
+    {
+      "name": "",
+      "price": 2,
+      "quantity": 0,
+      "selected": true,
+      "available": true,
+      "id": 9
     }
   ]
 }

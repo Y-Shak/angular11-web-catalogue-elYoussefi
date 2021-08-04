@@ -1,2 +1,83 @@
-<app-products-nav-bar (productEventEmitter)="onActionEvent($event)"></app-products-nav-bar>
-<app-products-list [productsInput$]="products$" (productEventEmitter)="onActionEvent($event)"></app-products-list>
+<nav class="navbar navbar-expand-sm bg-light navbar-light ">
+    <div class="container-fluid m-2">
+        <ul class="navbar navbar-nav">
+            <li><button class="btn btn-outline-info m-2" (click)="hundleClickGetAllProducts()">All</button></li>
+            <li><button class="btn btn-outline-info m-2" (click)="hundleClickGetSelectedProducts()">Selected</button>
+            </li>
+            <li><button class="btn btn-outline-info m-2" (click)="hundleClickGetAvailableProducts()">Available</button>
+            </li>
+            <li><button class="btn btn-outline-info m-2" (click)="hundleClickAddProduct()">New Product</button>
+            </li>
+        </ul>
+        <form class="form-inline d-flex" (ngSubmit)="onSubmitSearchProduct(f)" #f="ngForm">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="keyword"
+                ngModel>
+            <button class="btn btn-outline-success" type="submit"><i class="fa fa-search"></i></button>
+        </form>
+    </div>
+</nav>
+
+<ng-container *ngIf="products$ | async as result" [ngSwitch]="result.dataState">
+    <ng-container *ngSwitchCase="DataStateEnum.LOADING">
+        Loading ....
+    </ng-container>
+    <ng-container *ngSwitchCase="DataStateEnum.ERROR">
+        <div class="col-12 text-center">
+            <div class="alert alert-danger">
+                {{ result.errorMessage}}
+            </div>
+        </div>
+    </ng-container>
+    <ng-container *ngSwitchCase="DataStateEnum.LOADED">
+
+        <table class="table">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Selected</th>
+                <th>Available</th>
+                <th>Action</th>
+            </tr>
+            <tr *ngFor="let p of result.data">
+                <td>{{p.id}}</td>
+                <td>{{p.name}}</td>
+                <td>{{p.price}}</td>
+                <td>{{p.quantity}}</td>
+                <td>{{p.selected}}</td>
+                <td>{{p.available}}</td>
+                <td>
+
+                    <button *ngIf="p.selected" class="btn btn-success" type="button"
+                        (click)="hundleClickSelectProduct(p)"><i class="fa fa-check-circle"></i>
+                    </button>
+                    <button *ngIf="!p.selected" class="btn btn-warning" (click)="hundleClickSelectProduct(p)">
+                        <i class="fa fa-circle"></i>
+                    </button>
+
+                    <!-- <button class="btn" (click)="hundleClickSelectProduct(p)"
+                        [ngClass]="{'btn-danger' : p.selected, 'btn-success' : !p.selected}">
+                        <i *ngIf="p.selected" class="fa fa-check"></i>
+
+                    </button>
+                    <button class="btn" (click)="hundleClickSelectProduct(p)"
+                        [ngClass]="{'btn-danger' : p.selected, 'btn-success' : !p.selected}">
+                        <i *ngIf="!p.selected" class="fa fa-check"></i>
+                    </button> -->
+
+                </td>
+                <td>
+                    <button class="btn btn-danger" (click)="hundleClickDelete(p)">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </td>
+                <td>
+                    <button class="btn btn-danger" (click)="hundleClickEdit(p)">
+                        <span class="fa fa-edit"></span>
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </ng-container>
+</ng-container>

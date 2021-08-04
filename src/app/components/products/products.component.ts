@@ -5,7 +5,7 @@ import { Observable, of } from 'rxjs';
 import { catchError, map, startWith } from "rxjs/operators";
 import { Product } from 'src/app/models/product.model';
 import { ProductsService } from 'src/app/services/products.service';
-import { ActionEvent, AppDataState, DataStateEnum, ProductActionTypes } from 'src/app/state/product.state';
+import { AppDataState, DataStateEnum } from 'src/app/state/product.state';
 
 @Component({
   selector: 'app-products',
@@ -20,7 +20,6 @@ export class ProductsComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
-    // this.hundleClickGetAllProducts();
   }
   hundleClickGetAllProducts() {
     this.products$ = this.productService.getAllProducts()
@@ -59,11 +58,6 @@ export class ProductsComponent implements OnInit {
 
       );
   }
-  hundleClickAddProduct() {
-    this.router.navigate(['/newProduct']);
-  }
-
-  // methodes in list-component 
   hundleClickSelectProduct(p: Product) {
     this.productService.selectProduct(p)
       .subscribe(
@@ -83,23 +77,11 @@ export class ProductsComponent implements OnInit {
         )
     }
   }
+  hundleClickAddProduct() {
+    this.router.navigate(['/newProduct']);
+  }
   hundleClickEdit(p: Product) {
     this.router.navigate(['/editProduct/' + p.id]);
 
-  }
-
-
-  onActionEvent($event: ActionEvent) {
-    switch ($event.type) {
-      case ProductActionTypes.GET_ALL_PRODUCTS: this.hundleClickGetAllProducts(); break;
-      case ProductActionTypes.GET_SELECTED_PRODUCTS: this.hundleClickGetSelectedProducts(); break;
-      case ProductActionTypes.GET_AVAILABLE_PRODUCTS: this.hundleClickGetAvailableProducts(); break;
-      case ProductActionTypes.SEARCH_PRODUCTS: this.onSubmitSearchProduct($event.playload); break;
-      case ProductActionTypes.NEW_PRODUCT: this.hundleClickAddProduct(); break;
-      case ProductActionTypes.EDIT_PRODUCT: this.hundleClickEdit($event.playload); break;
-      case ProductActionTypes.DELETE_PRODUCT: this.hundleClickDelete($event.playload); break;
-      case ProductActionTypes.SELECT_PRODUCT: this.hundleClickSelectProduct($event.playload); break;
-
-    }
   }
 }

@@ -29,12 +29,12 @@
       "name": "edwas",
       "price": -9,
       "quantity": 8,
-      "selected": true,
+      "selected": false,
       "available": true
     },
     {
       "id": 6,
-      "name": "asA",
+      "name": "asssssss",
       "price": -5,
       "quantity": -4,
       "selected": true,
@@ -45,16 +45,8 @@
       "name": "aa",
       "price": 0,
       "quantity": 5,
-      "selected": true,
-      "available": false
-    },
-    {
-      "id": 8,
-      "name": "rien a dire top",
-      "price": 2,
-      "quantity": 0,
       "selected": false,
-      "available": true
+      "available": false
     }
   ]
 }

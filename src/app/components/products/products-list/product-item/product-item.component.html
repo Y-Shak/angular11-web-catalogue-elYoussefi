@@ -1,0 +1,27 @@
+<tr>
+    <td>{{product.id}}</td>
+    <td>{{product.name}}</td>
+    <td>{{product.price}}</td>
+    <td>{{product.quantity}}</td>
+    <td>{{product.selected}}</td>
+    <td>{{product.available}}</td>
+    <td>
+
+        <button *ngIf="product.selected" class="btn btn-success" type="button"
+            (click)="hundleClickSelectProduct(product)"><i class="fa fa-check-circle"></i>
+        </button>
+        <button *ngIf="!product.selected" class="btn btn-light" (click)="hundleClickSelectProduct(product)">
+            <i class="fa fa-check-circle"></i>
+        </button>
+    </td>
+    <td>
+        <button class="btn btn-danger" (click)="hundleClickDelete(product)">
+            <span class="fa fa-trash-o"></span>
+        </button>
+    </td>
+    <td>
+        <button class="btn btn-warning" (click)="hundleClickEdit(product)">
+            <span class="fa fa-edit"></span>
+        </button>
+    </td>
+</tr>
